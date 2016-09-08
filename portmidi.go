@@ -6,13 +6,13 @@ import (
 	"github.com/xlab/portmidi/pm"
 )
 
-// Init is the library initialisation function: call this before using portmidi.
-func Init() error {
+// Initialize is the library initialisation function: call this before using portmidi.
+func Initialize() error {
 	return pm.ToError(pm.Initialize())
 }
 
-// Deinit is the library termination function: call this after using portmidi.
-func Deinit() error {
+// Terminate is the library termination function: call this after using portmidi.
+func Terminate() error {
 	return pm.ToError(pm.Terminate())
 }
 
