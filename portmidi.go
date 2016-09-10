@@ -1,3 +1,4 @@
+// Package portmidi provides Go bindings for PortMIDI from the PortMedia set of libraries.
 package portmidi
 
 import (

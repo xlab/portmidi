@@ -1,7 +1,7 @@
 portmidi [![GoDoc](https://godoc.org/github.com/xlab/portmidi?status.svg)](https://godoc.org/github.com/xlab/portmidi)
 ========
 
-The package provides Go bindings for [PortMIDI](http://portmedia.sourceforge.net/portmidi/) from the PortMedia set of libraries. [PortMedia](http://portaudio.com) offers free, cross-platform, open-source I/O libraries for digital media including MIDI, video, and audio.
+Package portmidi provides Go bindings for [PortMIDI](http://portmedia.sourceforge.net/portmidi/) from the PortMedia set of libraries. [PortMedia](http://portaudio.com) offers free, cross-platform, open-source I/O libraries for digital media including MIDI, video, and audio.
 
 All the binding code for the `pm` package has automatically been generated with rules defined in [pm.yml](/pm.yml). The wrapping package `portmidi` has been done by hand and leverages channels for MIDI event streaming.
 
