@@ -18,7 +18,7 @@ $ go get github.com/xlab/portmidi
 
 ### MIDIPipe
 
-`midipipe` is a simple Go program that redirects all the events it gets from a MIDI input device
+[midipipe](/example/midipipe) is a simple Go program that redirects all the events it gets from a MIDI input device
 to the specified MIDI output device. You can specify route by device name (see example) or by its ID.
 
 The app requires minimum two devices to operate properly, but note that a single hardware piece can act
@@ -57,7 +57,7 @@ main.go:82: [DBG] rate mean 93.71848260518783
 
 ### Vocoder
 
-`vocoder` is an implementation of a simple vocoder in Go. It reads your voice using PortAudio, reads note-on events from your MIDI device using PortMIDI, and plays the altered voice back using PortAudio. Have fun.
+[vocoder](/example/vocoder) is an implementation of a simple vocoder in Go. It reads your voice using PortAudio, reads note-on events from your MIDI device using PortMIDI, and plays the altered voice back using PortAudio. Have fun.
 
 ```
 $ brew install portaudio portmidi
