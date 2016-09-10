@@ -107,7 +107,7 @@ func findCandidate(devices map[string]portmidi.DeviceID,
 			dev = nameID
 			return
 		}
-		closer.Fatalln("[ERR] midipipe was unable to locate required device:", name)
+		closer.Fatalln("[ERR] vocoder was unable to locate required device:", name)
 	}
 	if input {
 		dev, _ = portmidi.DefaultInputDeviceID()
