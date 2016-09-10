@@ -98,9 +98,6 @@ func NewOutputStream(id DeviceID, bufferSize, latency int,
 
 func (s *Stream) pushEvents(buf []pm.Event) {
 	for i := range buf {
-		if buf[i].Ref() == nil {
-			return
-		}
 		buf[i].Deref()
 		s.buf <- Event{
 			Timestamp: int32(buf[i].Timestamp),
@@ -122,8 +119,8 @@ func (s *Stream) processInput() {
 		default:
 			if pm.Poll(s.stream) == pm.True {
 				hadData = true
-				buf := make([]pm.Event, 0, 512)
-				size := pm.Read(s.stream, buf, 512)
+				buf := make([]pm.Event, 128)
+				size := pm.Read(s.stream, buf, 128)
 				s.pushEvents(buf[:size])
 				continue
 			} else if hadData {

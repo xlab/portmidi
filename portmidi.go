@@ -36,8 +36,8 @@ func CountDevices() int {
 
 type DeviceID pm.DeviceID
 
-// DefaultOutputDevice returns the default output device ID or ok=false if there are no devices.
-func DefaultOutputDevice() (DeviceID, bool) {
+// DefaultOutputDeviceID returns the default output device ID or ok=false if there are no devices.
+func DefaultOutputDeviceID() (DeviceID, bool) {
 	dev := pm.GetDefaultOutputDeviceID()
 	if dev == pm.NoDevice {
 		return 0, false
@@ -45,8 +45,8 @@ func DefaultOutputDevice() (DeviceID, bool) {
 	return DeviceID(dev), true
 }
 
-// DefaultInputDevice returns the default input device ID or ok=false if there are no devices.
-func DefaultInputDevice() (DeviceID, bool) {
+// DefaultInputDeviceID returns the default input device ID or ok=false if there are no devices.
+func DefaultInputDeviceID() (DeviceID, bool) {
 	dev := pm.GetDefaultInputDeviceID()
 	if dev == pm.NoDevice {
 		return 0, false
@@ -59,10 +59,10 @@ type DeviceInfo struct {
 	Interface string
 	// Name is a device name, e.g. USB MidiSport 1x1
 	Name string
-	// Input true iff input is available.
-	Input bool
-	// Output true iff output is available.
-	Output bool
+	// IsInputAvailable true iff input is available.
+	IsInputAvailable bool
+	// IsOutputAvailable true iff output is available.
+	IsOutputAvailable bool
 }
 
 // GetDeviceInfo returns device info for the provided device ID, or nil if ID is out of range.
@@ -73,10 +73,10 @@ func GetDeviceInfo(id DeviceID) *DeviceInfo {
 	}
 	info.Deref()
 	return &DeviceInfo{
-		Interface: info.Interf,
-		Name:      info.Name,
-		Input:     info.Input > 0,
-		Output:    info.Output > 0,
+		Interface:         info.Interf,
+		Name:              info.Name,
+		IsInputAvailable:  info.Input > 0,
+		IsOutputAvailable: info.Output > 0,
 	}
 }
 
