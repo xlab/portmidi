@@ -1,7 +1,8 @@
-portmidi
+portmidi [![GoDoc](https://godoc.org/github.com/xlab/portmidi?status.svg)](https://godoc.org/github.com/xlab/portmidi)
 ========
 
-The package provides Go bindings for [PortMIDI](http://portmedia.sourceforge.net/portmidi/) from the PortMedia set of libraries. [PortMedia](http://portaudio.com) offers free, cross-platform, open-source I/O libraries for digital media including MIDI, video, and audio.<br/>
+The package provides Go bindings for [PortMIDI](http://portmedia.sourceforge.net/portmidi/) from the PortMedia set of libraries. [PortMedia](http://portaudio.com) offers free, cross-platform, open-source I/O libraries for digital media including MIDI, video, and audio.
+
 All the binding code for the `pm` package has automatically been generated with rules defined in [pm.yml](/pm.yml). The wrapping package `portmidi` has been done by hand and leverages channels for MIDI event streaming.
 
 ## Usage
@@ -16,6 +17,12 @@ $ go get github.com/xlab/portmidi
 ## Examples
 
 ### MIDIPipe
+
+`midipipe` is a simple Go program that redirects all the events it gets from a MIDI input device
+to the specified MIDI output device. You can specify route by device name (see example) or by its ID.
+
+The app requires minimum two devices to operate properly, but note that a single hardware piece can act
+both as input and output device, so by "devices" I mean logical I/O streams.
 
 ```
 $ brew install portmidi
@@ -48,13 +55,9 @@ main.go:82: [DBG] rate mean 93.71848260518783
 ^Cmain.go:72: bye!
 ```
 
-`midipipe` is simple Go program that redirects all the events it gets from the MIDI input device
-to the specified MIDI output device. You can specify route by device name (see example) or by its ID.
-
-The app requires minimum two devices to operate properly, but note that a single hardware piece can act
-both as input and output device, so by "devices" I mean logical I/O streams.
-
 ### Vocoder
+
+`vocoder` is an implementation of a simple vocoder in Go. It reads your voice using PortAudio, reads note-on events from your MIDI device using PortMIDI, and plays the altered voice back using PortAudio. Have fun.
 
 ```
 $ brew install portaudio portmidi
@@ -71,8 +74,6 @@ main.go:62: note 66 (369.994Hz)
 main.go:62: note 60 (261.626Hz)
 ^C
 ```
-
-`vocoder` is an implementation of a simple vocoder in Go. It reads your voice using PortAudio, reads note-on events from your MIDI device using PortMIDI, and plays the altered voice back using PortAudio. Have fun.
 
 ### Rebuilding the package
 
